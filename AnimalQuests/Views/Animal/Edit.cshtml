@@ -1,0 +1,55 @@
+﻿@model testing.Models.Animal
+
+@{
+    ViewData["Title"] = "Edytuj zwierzę";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<form asp-action="Edit" asp-route-id="@Model.Id" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label">Imię</label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Species" class="form-label">Gatunek</label>
+        <input asp-for="Species" class="form-control" />
+        <span asp-validation-for="Species" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Archetype" class="form-label">Archetyp</label>
+        <input asp-for="Archetype" class="form-control" />
+        <span asp-validation-for="Archetype" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Weapon" class="form-label">Broń</label>
+        <input asp-for="Weapon" class="form-control" />
+        <span asp-validation-for="Weapon" class="text-danger"></span>
+    </div>
+
+    
+    <div class="mb-3">
+        <label asp-for="BiomeId" class="form-label">Biom</label>
+
+        <select asp-for="BiomeId"
+                asp-items="ViewBag.Biomes"
+                class="form-select">
+            <option value="">-- Wybierz biom --</option>
+        </select>
+
+        <span asp-validation-for="BiomeId"
+              class="text-danger"></span>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Zapisz zmiany</button>
+    <a asp-action="Index" class="btn btn-secondary">Anuluj</a>
+</form>

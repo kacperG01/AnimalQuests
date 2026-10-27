@@ -31,6 +31,22 @@ build_property._RazorSourceGeneratorDebug =
 build_property.EffectiveAnalysisLevelStyle = 10.0
 build_property.EnableCodeStyleSeverity = 
 
+[C:/Users/kacpi/Documents/GitHub/AnimalQuests/AnimalQuests/Views/Animal/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5pbWFsXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kacpi/Documents/GitHub/AnimalQuests/AnimalQuests/Views/Animal/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5pbWFsXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kacpi/Documents/GitHub/AnimalQuests/AnimalQuests/Views/Animal/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5pbWFsXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/kacpi/Documents/GitHub/AnimalQuests/AnimalQuests/Views/Animal/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQW5pbWFsXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/kacpi/Documents/GitHub/AnimalQuests/AnimalQuests/Views/Biome/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQmlvbWVcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

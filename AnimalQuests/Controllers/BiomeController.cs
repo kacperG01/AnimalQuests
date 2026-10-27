@@ -14,8 +14,8 @@ namespace AnimalQuests.Controllers
         }
         public async Task<IActionResult> Index()
         {
-            var employees = await _context.Biomes.ToListAsync();
-            return View(employees);
+            var biomes = await _context.Biomes.ToListAsync();
+            return View(biomes);
         }
 
 
@@ -27,14 +27,14 @@ namespace AnimalQuests.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Biome employee)
+        public async Task<IActionResult> Create(Biome biome)
         {
             if (!ModelState.IsValid)
             {
-                return View(employee);
+                return View(biome);
             }
 
-            await _context.Biomes.AddAsync(employee);
+            await _context.Biomes.AddAsync(biome);
             await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
@@ -44,31 +44,31 @@ namespace AnimalQuests.Controllers
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
-            var employee = await _context.Biomes.FindAsync(id);
+            var biome = await _context.Biomes.FindAsync(id);
 
-            if (employee == null)
+            if (biome == null)
             {
                 return NotFound();
             }
 
-            return View(employee);
+            return View(biome);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, Biome employee)
+        public async Task<IActionResult> Edit(int id, Biome biome)
         {
-            if (id != employee.Id)
+            if (id != biome.Id)
             {
                 return BadRequest();
             }
 
             if (!ModelState.IsValid)
             {
-                return View(employee);
+                return View(biome);
             }
 
-            _context.Biomes.Update(employee);
+            _context.Biomes.Update(biome);
             await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
@@ -78,28 +78,28 @@ namespace AnimalQuests.Controllers
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
-            var employee = await _context.Biomes.FindAsync(id);
+            var biome = await _context.Biomes.FindAsync(id);
 
-            if (employee == null)
+            if (biome == null)
             {
                 return NotFound();
             }
 
-            return View(employee);
+            return View(biome);
         }
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var employee = await _context.Biomes.FindAsync(id);
+            var biome = await _context.Biomes.FindAsync(id);
 
-            if (employee == null)
+            if (biome == null)
             {
                 return NotFound();
             }
 
-            _context.Biomes.Remove(employee);
+            _context.Biomes.Remove(biome);
             await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));

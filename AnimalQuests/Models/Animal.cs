@@ -1,4 +1,6 @@
-﻿namespace testing.Models
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+
+namespace testing.Models
 {
     public class Animal
     {
@@ -8,6 +10,7 @@
         public string Archetype { get; set; } = string.Empty;
         public string Weapon { get; set; } = string.Empty;
         public int BiomeId { get; set; }
+        [ValidateNever]
         public Biome Biome { get; set; } = null!;
 
         public ICollection<AnimalMission> AnimalMissions { get; set; }

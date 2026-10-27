@@ -1,0 +1,65 @@
+﻿@model List<testing.Models.Animal>
+
+@{
+    ViewData["Title"] = "Zwierzęta";
+}
+<h1>@ViewData["Title"]</h1>
+
+@if (Model.Count == 0)
+{
+    <p>Brak zwierząt w bazie danych.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nazwa</th>
+                <th>Gatunek</th>
+                <th>Archetyp</th>
+                <th>Broń</th>
+                <th>Rodzinny biom</th>
+                <th>Misje</th>
+                <th>Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var animal in Model)
+            {
+                <tr>
+                    <td>@animal.Name</td>
+                    <td>@animal.Species</td>
+                    <td>@animal.Archetype</td>
+                    <td>@animal.Weapon</td>
+                    <td>@animal.Biome.Name</td>
+                    <td>
+                        <a asp-action="MissionList"
+                           asp-route-id="@animal.Id"
+                           class="btn btn-sm btn-link">
+                            Lista misji
+                        </a>
+                    </td>
+                    <td>
+                        <a asp-action="Edit"
+                           asp-route-id="@animal.Id"
+                           class="btn btn-sm btn-warning">
+                            Edytuj
+                        </a>
+
+                        <a asp-action="Delete"
+                           asp-route-id="@animal.Id"
+                           class="btn btn-sm btn-danger">
+                            Usuń
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<a asp-controller="Animal"
+   asp-action="Create"
+   class="btn btn-primary mb-3">
+    Dodaj zwierzę
+</a>
