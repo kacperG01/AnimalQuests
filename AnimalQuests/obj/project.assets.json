@@ -2182,11 +2182,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\kacpi\\source\\repos\\AnimalQuests\\AnimalQuests\\AnimalQuests.csproj",
+      "projectUniqueName": "C:\\Users\\kacpi\\Documents\\GitHub\\AnimalQuests\\AnimalQuests\\AnimalQuests.csproj",
       "projectName": "AnimalQuests",
-      "projectPath": "C:\\Users\\kacpi\\source\\repos\\AnimalQuests\\AnimalQuests\\AnimalQuests.csproj",
+      "projectPath": "C:\\Users\\kacpi\\Documents\\GitHub\\AnimalQuests\\AnimalQuests\\AnimalQuests.csproj",
       "packagesPath": "C:\\Users\\kacpi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\kacpi\\source\\repos\\AnimalQuests\\AnimalQuests\\obj\\",
+      "outputPath": "C:\\Users\\kacpi\\Documents\\GitHub\\AnimalQuests\\AnimalQuests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -8,8 +8,6 @@
         public string Archetype { get; set; } = string.Empty;
         public string Weapon { get; set; } = string.Empty;
         public int BiomeId { get; set; }
-
-        // Właściwość nawigacyjna do biomu
         public Biome Biome { get; set; } = null!;
 
         public ICollection<AnimalMission> AnimalMissions { get; set; }

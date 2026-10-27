@@ -1,0 +1,49 @@
+﻿@model List<testing.Models.Biome>
+
+@{
+    ViewData["Title"] = "Biomy";
+}
+<h1>@ViewData["Title"]</h1>
+
+@if (Model.Count == 0)
+{
+    <p>Brak biomów w bazie danych.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nazwa</th>
+                <th>Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var biome in Model)
+            {
+                <tr>
+                    <td>@biome.Name</td>
+                    <td>
+                        <a asp-action="Edit"
+                           asp-route-id="@biome.Id"
+                           class="btn btn-sm btn-warning">
+                            Edytuj
+                        </a>
+
+                        <a asp-action="Delete"
+                           asp-route-id="@biome.Id"
+                           class="btn btn-sm btn-danger">
+                            Usuń
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<a asp-controller="Biome"
+   asp-action="Create"
+   class="btn btn-primary mb-3">
+    Dodaj biom
+</a>
