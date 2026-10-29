@@ -1,0 +1,87 @@
+﻿@model testing.Models.Mission
+
+@{
+    ViewData["Title"] = "Szczegóły misji";
+}
+
+<h1>Szczegóły misji</h1>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <h4>Misja #@Model.Id</h4>
+
+        <p>
+            <strong>Cel:</strong>
+            @Model.Objective
+        </p>
+
+        <p>
+            <strong>Biom:</strong>
+            @Model.AssignedBiome.Name
+        </p>
+
+        <p>
+            <strong>Status:</strong>
+            @{
+                switch (Model.Status)
+                {
+                    case 0:
+                        <span>Nieukończona</span>
+                        break;
+                    case 1:
+                        <span>Zakończona powodzeniem</span>
+                        break;
+                    case 2:
+                        <span>Zakończona porażką</span>
+                        break;
+                    case 3:
+                        <span>[REDACTED]</span>
+                        break;
+                    default:
+                        <span>[błąd]</span>
+                        break;
+                }
+            }
+        </p>
+    </div>
+</div>
+
+<h2>Uczestniczące zwierzęta</h2>
+
+@if (Model.AnimalMissions.Count == 0)
+{
+    <p>W tej misji nie uczestniczy jeszcze żadne zwierzę.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nazwa</th>
+                <th>Gatunek</th>
+                <th>Archetyp</th>
+                <th>Broń</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var animalMission in Model.AnimalMissions)
+            {
+                var animal = animalMission.Animal;
+
+                <tr>
+                    <td>@animal.Id</td>
+                    <td>@animal.Name</td>
+                    <td>@animal.Species</td>
+                    <td>@animal.Archetype</td>
+                    <td>@animal.Weapon</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<a asp-action="Index" class="btn btn-secondary">
+    Powrót do listy misji
+</a>

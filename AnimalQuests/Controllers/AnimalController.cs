@@ -115,6 +115,86 @@ namespace AnimalQuests.Controllers
 
 
 
+        [HttpGet]
+        public async Task<IActionResult> AssignToMission(int id)
+        {
+            var animal = await _context.Animals
+                .FirstOrDefaultAsync(a => a.Id == id);
+
+            if (animal == null)
+            {
+                return NotFound();
+            }
+
+            if (!await _context.Missions.AnyAsync())
+            {
+                TempData["Error"] = "Najpierw utwórz przynajmniej jedną misję.";
+
+                return RedirectToAction(nameof(Index));
+            }
+
+            await LoadMissionsAsync();
+
+            ViewBag.AnimalName = animal.Name;
+
+            var model = new AnimalMission
+            {
+                AnimalId = animal.Id
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AssignToMission(AnimalMission animalMission)
+        {
+            bool animalExists = await _context.Animals
+                .AnyAsync(a => a.Id == animalMission.AnimalId);
+
+            bool missionExists = await _context.Missions
+                .AnyAsync(m => m.Id == animalMission.MissionId);
+
+            if (!animalExists || !missionExists)
+            {
+                return NotFound();
+            }
+
+            bool alreadyAssigned = await _context.AnimalMissions
+                .AnyAsync(am =>
+                    am.AnimalId == animalMission.AnimalId &&
+                    am.MissionId == animalMission.MissionId);
+
+            if (alreadyAssigned)
+            {
+                ModelState.AddModelError(
+                    string.Empty,
+                    "To zwierzę jest już przypisane do tej misji."
+                );
+            }
+
+            if (!ModelState.IsValid)
+            {
+                await LoadMissionsAsync();
+
+                var animal = await _context.Animals
+                    .FirstAsync(a => a.Id == animalMission.AnimalId);
+
+                ViewBag.AnimalName = animal.Name;
+
+                return View(animalMission);
+            }
+
+            _context.AnimalMissions.Add(animalMission);
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+
+
+
 
         private async Task LoadBiomesAsync()
         {

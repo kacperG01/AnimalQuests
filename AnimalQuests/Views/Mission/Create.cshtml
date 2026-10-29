@@ -1,0 +1,47 @@
+﻿@model testing.Models.Mission
+
+@{
+    ViewData["Title"] = "Utwórz misję";
+}
+
+<h1>Utwórz misję</h1>
+
+<form asp-controller="Mission" asp-action="Create" method="post">
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="Objective" class="form-label">
+            Cel misji
+        </label>
+
+        <input asp-for="Objective" class="form-control" />
+
+        <span asp-validation-for="Objective"
+              class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="BiomeId" class="form-label">
+            Biom
+        </label>
+
+        <select asp-for="BiomeId"
+                asp-items="ViewBag.Biomes"
+                class="form-select">
+            <option value="">-- Wybierz biom --</option>
+        </select>
+
+        <span asp-validation-for="BiomeId"
+              class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Utwórz misję
+    </button>
+
+    <a asp-action="Index" class="btn btn-secondary">
+        Anuluj
+    </a>
+
+</form>

@@ -35,8 +35,14 @@ else
                     <td>
                         <a asp-action="MissionList"
                            asp-route-id="@animal.Id"
-                           class="btn btn-sm btn-link">
+                           class="btn btn-sm btn-primary">
                             Lista misji
+                        </a>
+                        <a asp-controller="Animal"
+                           asp-action="AssignToMission"
+                           asp-route-id="@animal.Id"
+                           class="btn btn-sm btn-primary">
+                            Przypisz do misji
                         </a>
                     </td>
                     <td>

@@ -1,0 +1,45 @@
+﻿@model testing.Models.AnimalMission
+
+@{
+    ViewData["Title"] = "Przypisz zwierzę do misji";
+}
+
+<h1>Przypisz zwierzę do misji</h1>
+
+<p>
+    Zwierzę:
+    <strong>@ViewBag.AnimalName</strong>
+</p>
+
+<form asp-controller="Animal"
+      asp-action="AssignToMission"
+      method="post">
+
+    <input type="hidden" asp-for="AnimalId" />
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="MissionId" class="form-label">
+            Wybierz misję
+        </label>
+
+        <select asp-for="MissionId"
+                asp-items="ViewBag.Missions"
+                class="form-select">
+            <option value="">-- Wybierz misję --</option>
+        </select>
+
+        <span asp-validation-for="MissionId"
+              class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Przypisz do misji
+    </button>
+
+    <a asp-action="Animals" class="btn btn-secondary">
+        Anuluj
+    </a>
+
+</form>
