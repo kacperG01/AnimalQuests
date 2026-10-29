@@ -195,7 +195,21 @@ namespace AnimalQuests.Controllers
 
 
 
+        public async Task<IActionResult> MissionList(int id)
+        {
+            var animal = await _context.Animals
+                .Include(a => a.AnimalMissions)
+                    .ThenInclude(am => am.Mission)
+                        .ThenInclude(m => m.AssignedBiome)
+                .FirstOrDefaultAsync(a => a.Id == id);
 
+            if (animal == null)
+            {
+                return NotFound();
+            }
+
+            return View(animal);
+        }
         private async Task LoadBiomesAsync()
         {
             ViewBag.Biomes = new SelectList(

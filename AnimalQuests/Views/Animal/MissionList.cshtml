@@ -1,0 +1,70 @@
+﻿@model AnimalQuests.Models.Animal
+
+@{
+    ViewData["Title"] = "Misje zwierzęcia: " + Model.Name;
+}
+
+<h1>@ViewData["Title"]</h1>
+
+@if (Model.AnimalMissions.Count == 0)
+{
+    <p>Brak udziału w misjach...</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Cel misji</th>
+                <th>Biom</th>
+                <th>Status</th>
+                <th>Akcje</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var animalMission in Model.AnimalMissions)
+            {
+                <tr>
+                    <td>@animalMission.Mission.Objective</td>
+                    <td>@animalMission.Mission.AssignedBiome.Name</td>
+                    <td>
+                        @{
+                            switch (animalMission.Mission.Status)
+                            {
+                                case 0:
+                                    <span>Nieukończona</span>
+                                    break;
+                                case 1:
+                                    <span>Zakończona powodzeniem</span>
+                                    break;
+                                case 2:
+                                    <span>Zakończona porażką</span>
+                                    break;
+                                case 3:
+                                    <span>[REDACTED]</span>
+                                    break;
+                                default:
+                                    <span>[błąd]</span>
+                                    break;
+                            }
+                        }
+                    </td>
+                    <td>
+                        <a asp-controller="Mission"
+                           asp-action="Details"
+                           asp-route-id="@animalMission.MissionId"
+                           class="btn btn-sm btn-primary">
+                            Szczegóły
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<a asp-controller="Animal"
+   asp-action="Index"
+   class="btn btn-primary mb-3">
+    Wróć
+</a>

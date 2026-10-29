@@ -1,0 +1,39 @@
+﻿@model AnimalQuests.Models.Biome
+
+@{
+    ViewData["Title"] = "Mieszkańcy biomu: "+Model.Name;
+}
+<h1>@ViewData["Title"]</h1>
+
+@if (Model.Animals.Count == 0)
+{
+    <p>Ten biom nie ma mieszkańców...</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Imię</th>
+                <th>Gatunek</th>
+                <th>Archetyp</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var animal in Model.Animals)
+            {
+                <tr>
+                    <td>@animal.Name</td>
+                    <td>@animal.Species</td>
+                    <td>@animal.Archetype</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<a asp-controller="Biome"
+   asp-action="Index"
+   class="btn btn-primary mb-3">
+    Wróć
+</a>

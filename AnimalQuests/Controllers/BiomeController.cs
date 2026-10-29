@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using AnimalQuests.Data;
+﻿using AnimalQuests.Data;
 using AnimalQuests.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace AnimalQuests.Controllers
 {
@@ -14,6 +15,7 @@ namespace AnimalQuests.Controllers
         }
         public async Task<IActionResult> Index()
         {
+            await LoadAnimalsAsync();
             var biomes = await _context.Biomes.ToListAsync();
             return View(biomes);
         }
@@ -103,6 +105,33 @@ namespace AnimalQuests.Controllers
             await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
+        }
+
+
+
+
+
+        public async Task<IActionResult> AnimalList(int id)
+        {
+            var biome = await _context.Biomes
+                .Include(b => b.Animals).FirstOrDefaultAsync(b => b.Id == id);
+
+            if (biome == null)
+            {
+                return NotFound();
+            }
+
+            return View(biome);
+        }
+        private async Task LoadAnimalsAsync()
+        {
+            ViewBag.Animals = new SelectList(
+                await _context.Animals.ToListAsync(),
+                "Id",
+                "Name",
+                "Species",
+                "Archetype"
+            );
         }
     }
 }
