@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
-namespace testing.Models
+namespace AnimalQuests.Models
 {
     public class Mission
     {

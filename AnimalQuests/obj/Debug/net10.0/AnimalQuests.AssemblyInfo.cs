@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AnimalQuests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+85b7dbb4236cd79bde978226e010b713e84cf79d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+005972846a8ad67d45d0dd85e1dcb933c4dcc10f")]
 [assembly: System.Reflection.AssemblyProductAttribute("AnimalQuests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AnimalQuests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

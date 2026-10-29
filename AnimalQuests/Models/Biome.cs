@@ -1,4 +1,4 @@
-﻿namespace testing.Models
+﻿namespace AnimalQuests.Models
 {
     public class Biome
     {

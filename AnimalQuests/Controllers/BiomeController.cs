@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using testing.Data;
-using testing.Models;
+using AnimalQuests.Data;
+using AnimalQuests.Models;
 
 namespace AnimalQuests.Controllers
 {

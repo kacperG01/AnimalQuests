@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using testing.Data;
+using AnimalQuests.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 

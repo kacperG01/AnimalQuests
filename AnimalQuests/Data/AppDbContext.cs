@@ -1,11 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
-using testing.Models;
+using AnimalQuests.Models;
 
 //Add-Migration name
 //Update-Database
 
-namespace testing.Data
+namespace AnimalQuests.Data
 {
     public class AppDbContext : DbContext
     {
